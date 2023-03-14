@@ -35,6 +35,12 @@ class Book(models.Model):
     # Genre class has already been defined so we can specify the object above.
     genre = models.ManyToManyField(Genre, help_text='Select a genre for this book')
 
+    class Meta:
+        # …
+        permissions = (("can_mark_returned", "Set book as returned"),)
+
+
+
     def __str__(self):
         """String for representing the Model object."""
         return self.title
